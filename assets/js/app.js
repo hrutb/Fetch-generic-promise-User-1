@@ -191,13 +191,20 @@ function onUpdate(){
      makeApiCall('PATCH',updateUrl,updateObj)
         
         .then(()=>{
-             let tr = document.querySelector('tr').chi
-
-
+             let tr = document.querySelector('tr');
+                let card =tr.children; 
+                
+                card[1].innerHTML = updateObj.name;
+                card[2].innerHTML = updateObj.username;
+                card[3].innerHTML = updateObj.email;
+                card[4].innerHTML = updateObj.contact;
+                 
              addUser.classList.remove('d-none');
              updateUser.classList.add('d-none');
              userForm.reset();
+
              tr.scrollIntoView({block:'center',behavior:'smooth'});
+
              snackbar(' User updated successfully','success');
         }) 
         .catch((err)=>{ 
